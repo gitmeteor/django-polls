@@ -1,0 +1,14 @@
+<link href="//cdn.bootcss.com/materialize/0.98.0/css/materialize.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/materialize/0.98.0/js/materialize.js"></script>
+<h3>{{ question.question_text }}</h3>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+
+
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>

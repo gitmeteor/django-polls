@@ -1,0 +1,16 @@
+<link href="//cdn.bootcss.com/materialize/0.98.0/css/materialize.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/materialize/0.98.0/js/materialize.js"></script>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>    
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
